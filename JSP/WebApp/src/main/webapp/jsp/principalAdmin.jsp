@@ -33,7 +33,7 @@
 					<%=((Usuarios)session.getAttribute("usuLogeado")).getNombre()%>
 					</a>
 				</li>	
-				<li class="breadcrumb-item">Pincipal Usuario</li>
+				<li class="breadcrumb-item">ADMIN</li>
 				<li class="breadcrumb-item active"><a href="../CerrarSesion">Cerrar Sesión</a></li>		
 			</ol>
 		</div>
@@ -47,7 +47,9 @@
 						<th>Título</th>
 						<th>Autor</th>
 						<th>ISBN</th>
+						<th>Precio</th>
 						<th>Portada</th>
+						
 						<th></th>
 					</tr>
 				</thead>
@@ -58,6 +60,7 @@
 					<td><%=l.getTitulo()%></td>
 					<td><%=l.getAutor()%></td>
 					<td><%=l.getIsbn()%></td>
+					<td><%=l.getPrecio()%></td>
 					<td><img alt="Portada"
 						src="image.jsp?imag=<%=l.getidLibros()%>" class="img-thumbnail"
 						width="50" height="50"></td>

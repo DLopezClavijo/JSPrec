@@ -1,7 +1,7 @@
-<%@page import="es.altair.bean.Libro"%>
+<%@page import="es.altair.bean.Libros"%>
 <%@page import="es.altair.dao.LibroDAOImplHibernate"%>
 <%@page import="es.altair.dao.LibroDAO"%>
-<%@page import="es.altair.bean.Usuario"%>
+<%@page import="es.altair.bean.Usuarios"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,13 +23,13 @@
 				response.sendRedirect("../index.jsp?mensaje=Inicie sesión");
 			} else {
 				LibroDAO lDAO = new LibroDAOImplHibernate();
-				Libro l = lDAO.obtenerLibroPorUUID(request.getParameter("uuid"));
+				Libros l = lDAO.obtenerLibroPorUUID(request.getParameter("uuid"));
 		%>
 
 		<div class="row">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="../index.jsp">Bienvenido
-						<%=((Usuario) session.getAttribute("usuLogeado")).getNombre()%>
+						<%=((Usuarios) session.getAttribute("usuLogeado")).getNombre()%>
 				</a></li>
 				<li class="breadcrumb-item"><a href="principalUsu.jsp">Pincipal
 						Usuario</a></li>
@@ -60,9 +60,13 @@
 								id="isbn" class="form-control" value="<%=l.getIsbn()%>">
 						</div>
 						<div class="form-group">
-							<img alt="Portada" src="image.jsp?imag=<%=l.getIdLibro() %>" class="img-thumbnail"
+							<img alt="Portada" src="image.jsp?imag=<%=l.getidLibros() %>" class="img-thumbnail"
 								width="50" height="50"> <input type="file"
 								class="form-control" id="portada" name="portada">
+						</div>
+						<div class="form-group">
+							<label for="precio">Precio</label> <input type="float" name="precio"
+								id="precio" class="form-control" value="<%=l.getPrecio() %>">
 						</div>
 						<div class="form-group">
 							<input type="submit" class="form-control btn btn-primary">

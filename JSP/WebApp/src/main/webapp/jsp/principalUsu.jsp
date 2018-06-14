@@ -33,7 +33,7 @@
 					<%=((Usuarios)session.getAttribute("usuLogeado")).getNombre()%>
 					</a>
 				</li>	
-				<li class="breadcrumb-item">ADMINISTRADOR</li>
+				<li class="breadcrumb-item">Usuario</li>
 				<li class="breadcrumb-item active"><a href="../CerrarSesion">Cerrar Sesión</a></li>		
 			</ol>
 		</div>
@@ -45,9 +45,10 @@
 					<tr>
 						<th>Título</th>
 						<th>Autor</th>
-						<th>ISBN</th>
+						<th>ISBN</th>				
 						<th>Portada</th>
 						<th>Precio</th>
+						
 						<th></th>
 					</tr>
 				</thead>
@@ -61,15 +62,11 @@
 					<td><img alt="Portada"
 						src="image.jsp?imag=<%=l.getidLibros()%>" class="img-thumbnail"
 						width="50" height="50"></td>
-					<td><%=l.getPrecio()%></td>
-						 <!-- Button trigger modal -->
-						<button type="button" class="btn btn-warning" data-toggle="modal"
-							data-target="#borrarLibro<%=l.getidLibros()%>">
-							<i class="fa fa-times" aria-hidden="true"></i> Borrar
-						</button>
-						<button type="button" class="btn" data-toggle="modal"
+					<td><%=l.getPrecio()%> euros</td>
+					<td>	 <!-- Button trigger modal -->		
+						<button type="button" class="btn btn-success" data-toggle="modal"
 							data-target="#editarLibro<%=l.getidLibros()%>">
-							<i class="fa fa-times" aria-hidden="true"></i> Borrar
+							<i class="fa fa-shopping-basket" aria-hidden="true"></i> Añadir a cesta
 						</button> <!-- Modal -->
 						<div class="modal fade" id="borrarLibro<%=l.getidLibros()%>"
 							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -81,7 +78,7 @@
 											Libro</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
+											
 										</button>
 									</div>
 								</div>

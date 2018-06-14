@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<label for="isbn">Precio</label> <input type="float" name="precio"
-								id="precio" class="form-control">
+								id="precio" class="form-control" required="required">
 						</div>
 						<div class="form-group">
 							<input type="submit" class="form-control btn btn-primary">
