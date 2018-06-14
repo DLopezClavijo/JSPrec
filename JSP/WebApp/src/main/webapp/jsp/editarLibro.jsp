@@ -45,7 +45,7 @@
 					<form action="../EditarLibro" method="post" role="form"
 						enctype="multipart/form-data">
 						<h3>Editar Libro</h3>
-						<input type="hidden" name="uuid" id="uuid" value="<%=l.getUuid()%>">
+						<input type="hidden" name="uuid" id="uuid" value="<%=l.getidLibros()%>">
 						<div class="form-group">
 							<label for="titulo">Título</label> <input type="text"
 								name="titulo" id="titulo" class="form-control"
@@ -66,7 +66,7 @@
 						</div>
 						<div class="form-group">
 							<label for="precio">Precio</label> <input type="float" name="precio"
-								id="precio" class="form-control" value="<%=l.getPrecio() %>">
+								id="precio" class="form-control" value="<%=l.getPrecio()%>">
 						</div>
 						<div class="form-group">
 							<input type="submit" class="form-control btn btn-primary">

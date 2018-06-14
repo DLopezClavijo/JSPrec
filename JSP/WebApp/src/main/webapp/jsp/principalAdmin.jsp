@@ -66,7 +66,7 @@
 						width="50" height="50"></td>
 					<td>
 						<button type="button" class="btn btn-default"
-							onclick="location.href='editarLibro.jsp?uuid=<%=l.getUuid()%>'">
+							onclick="location.href='editarLibro.jsp?uuid=<%=l.getidLibros()%>'">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							Actualizar
 						</button> <!-- Button trigger modal -->

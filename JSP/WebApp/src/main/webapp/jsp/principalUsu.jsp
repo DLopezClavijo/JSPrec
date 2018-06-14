@@ -47,7 +47,7 @@
 						<th>Autor</th>
 						<th>ISBN</th>				
 						<th>Portada</th>
-						<th>Precio</th>
+						<th>Precio </th>
 						
 						<th></th>
 					</tr>
@@ -62,7 +62,7 @@
 					<td><img alt="Portada"
 						src="image.jsp?imag=<%=l.getidLibros()%>" class="img-thumbnail"
 						width="50" height="50"></td>
-					<td><%=l.getPrecio()%> euros</td>
+					<td><%=l.getPrecio()%></td>
 					<td>	 <!-- Button trigger modal -->		
 						<button type="button" class="btn btn-success" data-toggle="modal"
 							data-target="#editarLibro<%=l.getidLibros()%>">
