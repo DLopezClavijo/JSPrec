@@ -28,7 +28,7 @@ import javax.persistence.TemporalType;
 	 private float precio; 
 	 
 	 @ManyToOne(cascade=CascadeType.ALL)
-	 @JoinColumn(name="idusuarios")
+	 @JoinColumn(name="idUsuario")
 	 private Usuarios usuarios; 
 	 
 	 @ManyToOne(cascade=CascadeType.ALL)

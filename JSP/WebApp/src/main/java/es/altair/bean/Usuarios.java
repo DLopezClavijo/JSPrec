@@ -18,7 +18,7 @@ public class Usuarios implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idUsuarios;
+	private int idusuario;
 	private String login;
 	private String password;
 	private String nombre;
@@ -45,11 +45,11 @@ public class Usuarios implements Serializable {
 	}
 
 	public int getIdUsuarios() {
-		return idUsuarios;
+		return idusuario;
 	}
 
-	public void setIdUsuarios(int idUsuarios) {
-		this.idUsuarios = idUsuarios;
+	public void setIdUsuarios(int idusuario) {
+		this.idusuario = idusuario;
 	}
 
 	public String getLogin() {
@@ -104,7 +104,7 @@ public class Usuarios implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuarios + ", login=" + login + ", password=" + password + ", nombre=" + nombre
+		return "Usuario [idUsuario=" + idusuario + ", login=" + login + ", password=" + password + ", nombre=" + nombre
 				+ ", email=" + email + ", tipo=" + tipo + "]";
 	}
 
