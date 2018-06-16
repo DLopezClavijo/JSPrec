@@ -34,8 +34,10 @@
 					</a>
 				</li>	
 				<li class="breadcrumb-item">Usuario</li>
-				<li class="breadcrumb-item active"><a href="../CerrarSesion">Cerrar Sesión</a></li>		
+				<li class="breadcrumb-item active"><a href="../CerrarSesion">Cerrar Sesión</a></li>	
+				<li class="nav-item"><a class="nav-link" href="cesta.jsp">Cesta</a></li>
 			</ol>
+			
 		</div>
 
 		<div class="row col-md-8 col-md-offset-2">
@@ -60,15 +62,15 @@
 					<td><%=l.getAutor()%></td>
 					<td><%=l.getIsbn()%></td>
 					<td><img alt="Portada"
-						src="image.jsp?imag=<%=l.getidLibros()%>" class="img-thumbnail"
+						src="image.jsp?imag=<%=l.getidLibro()%>" class="img-thumbnail"
 						width="50" height="50"></td>
 					<td><%=l.getPrecio()%></td>
 					<td>	 <!-- Button trigger modal -->		
 						<button type="button" class="btn btn-success" data-toggle="modal"
-							data-target="#editarLibro<%=l.getidLibros()%>">
-							<i class="fa fa-shopping-basket" aria-hidden="true"></i> Añadir a cesta
+							data-target="#editarLibro<%=l.getidLibro()%>">
+							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Añadir a cesta
 						</button> <!-- Modal -->
-						<div class="modal fade" id="borrarLibro<%=l.getidLibros()%>"
+						<div class="modal fade" id="borrarLibro<%=l.getidLibro()%>"
 							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 							aria-hidden="true">
 							<div class="modal-dialog" role="document">

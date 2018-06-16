@@ -8,5 +8,5 @@ import es.altair.bean.Usuarios;
 public interface CompraDAO {
 	void insertar(Compras c);
 	List<Compras> listarPorUsu(Usuarios u);
-	void borrar(int idArticulo);
+	void borrar(int idLibro);
 }

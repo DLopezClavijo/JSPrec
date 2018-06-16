@@ -21,7 +21,7 @@ public class Libros implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idLibros;
+	private int idLibro;
 	private String titulo;
 	private String autor;
 	private int isbn;
@@ -46,12 +46,12 @@ public class Libros implements Serializable {
 		this.precio = precio;
 	}
 
-	public int getidLibros() {
-		return idLibros;
+	public int getidLibro() {
+		return idLibro;
 	}
 
-	public void setidLibros(int idLibros) {
-		this.idLibros = idLibros;
+	public void setidLibro(int idLibro) {
+		this.idLibro = idLibro;
 	}
 
 	public String getTitulo() {
@@ -106,7 +106,7 @@ public class Libros implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Libro [idLibros=" + idLibros + ", titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn + ", portada="
+		return "Libro [idLibro=" + idLibro + ", titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn + ", portada="
 				+ Arrays.toString(portada) + ", uuid=" + uuid + ", precio=" + precio + ", compras=" + compras + "]";
 	}
 

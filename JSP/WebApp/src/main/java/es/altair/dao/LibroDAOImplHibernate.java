@@ -89,6 +89,7 @@ public class LibroDAOImplHibernate implements LibroDAO {
 		}
 		return l;
 	}
+	
 
 	public void actualizar(String titulo, String autor, int isbn, ByteArrayOutputStream os, String uuid,Float precio,
 			Usuarios usuario) {

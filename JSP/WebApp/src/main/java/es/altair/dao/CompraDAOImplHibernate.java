@@ -14,26 +14,25 @@ public class CompraDAOImplHibernate implements CompraDAO {
 	public void insertar(Compras c) {
 		Session sesion = SessionProvider.getSession();
 		
-//		try {
-//			System.out.println("entramos en try ");
-//			sesion.beginTransaction();
-//			System.out.println("antes de guardar");
-//
-//			sesion.createSQLQuery("INSERT INTO compra (fecha, cantidad, precio, idUsuario, idLibro) values(:f, :c, :p, :u, :l) ")
-//				.setParameter("f", c.getFecha())
-//				.setParameter("c", c.getCantidad())
-//				.setParameter("p", c.getPrecio())
-//				.setParameter("u", c.getUsuario().getIdUsuario())
-//				.setParameter("a", c.getLibro().getIdLibro())
-//				.executeUpdate();
-//			
-//			System.out.println("despues de guardar");
-//			sesion.getTransaction().commit();
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		} finally {
-//			sesion.close();
-//		}
+		try {
+		System.out.println("entramos en try ");
+		sesion.beginTransaction();
+		System.out.println("antes de guardar");
+		sesion.createSQLQuery("INSERT INTO compra (fecha, cantidad, precio, idUsuario, idLibro) values(:f, :c, :p, :u, :l) ")
+			.setParameter("f", c.getFecha())
+			.setParameter("c", c.getCantidad())
+			.setParameter("p", c.getPrecio())
+				.setParameter("u", c.getUsuario().getIdUsuarios())
+			.setParameter("a", c.getLibro().getidLibro())
+			.executeUpdate();
+		
+		System.out.println("despues de guardar");
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+		}
 		
 	}
 
@@ -60,14 +59,14 @@ public class CompraDAOImplHibernate implements CompraDAO {
 		return compras;
 	}
 
-	public void borrar(int idArticulo) {
+	public void borrar(int idLibro) {
 		Session sesion = SessionProvider.getSession();
 		
 		try {
 			sesion.beginTransaction();
 			
 			sesion.createQuery("DELETE FROM Compra WHERE idcompra=:clave")
-					.setParameter("clave", idArticulo)
+					.setParameter("clave", idLibro)
 					.executeUpdate();
 			
 			sesion.getTransaction().commit();

@@ -45,7 +45,7 @@
 					<form action="../EditarLibro" method="post" role="form"
 						enctype="multipart/form-data">
 						<h3>Editar Libro</h3>
-						<input type="hidden" name="uuid" id="uuid" value="<%=l.getidLibros()%>">
+						<input type="hidden" name="uuid" id="uuid" value="<%=l.getUuid()%>">
 						<div class="form-group">
 							<label for="titulo">Título</label> <input type="text"
 								name="titulo" id="titulo" class="form-control"
@@ -60,7 +60,7 @@
 								id="isbn" class="form-control" value="<%=l.getIsbn()%>">
 						</div>
 						<div class="form-group">
-							<img alt="Portada" src="image.jsp?imag=<%=l.getidLibros() %>" class="img-thumbnail"
+							<img alt="Portada" src="image.jsp?imag=<%=l.getidLibro() %>" class="img-thumbnail"
 								width="50" height="50"> <input type="file"
 								class="form-control" id="portada" name="portada">
 						</div>

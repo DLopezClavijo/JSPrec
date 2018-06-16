@@ -62,19 +62,19 @@
 					<td><%=l.getIsbn()%></td>
 					<td><%=l.getPrecio()%></td>
 					<td><img alt="Portada"
-						src="image.jsp?imag=<%=l.getidLibros()%>" class="img-thumbnail"
+						src="image.jsp?imag=<%=l.getidLibro()%>" class="img-thumbnail"
 						width="50" height="50"></td>
 					<td>
 						<button type="button" class="btn btn-default"
-							onclick="location.href='editarLibro.jsp?uuid=<%=l.getidLibros()%>'">
+							onclick="location.href='editarLibro.jsp?uuid=<%=l.getidLibro()%>'">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							Actualizar
 						</button> <!-- Button trigger modal -->
 						<button type="button" class="btn btn-warning" data-toggle="modal"
-							data-target="#borrarLibro<%=l.getidLibros()%>">
+							data-target="#borrarLibro<%=l.getidLibro()%>">
 							<i class="fa fa-times" aria-hidden="true"></i> Borrar
 						</button> <!-- Modal -->
-						<div class="modal fade" id="borrarLibro<%=l.getidLibros()%>"
+						<div class="modal fade" id="borrarLibro<%=l.getidLibro()%>"
 							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 							aria-hidden="true">
 							<div class="modal-dialog" role="document">
