@@ -79,7 +79,7 @@
 										<h5 class="modal-title" id="exampleModalLabel">Borrar
 											Libro</h5>
 										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
+											onclick="location.href='../ComprarLibro?codigo=<%=l.getUuid()%> aria-label="Close">
 											
 										</button>
 									</div>
