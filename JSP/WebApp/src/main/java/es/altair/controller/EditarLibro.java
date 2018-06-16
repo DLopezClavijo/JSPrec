@@ -46,11 +46,30 @@ public class EditarLibro extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uuid = request.getParameter("uuid");
-		String titulo = request.getParameter("titulo");
-		String autor = request.getParameter("autor");
-		int isbn = Integer.parseInt(request.getParameter("isbn"));
-		float precio = Float.parseFloat("precio");
+		Libros l = null;
+		LibroDAO lDAO = null;
+		String uuid = null;
+		String autor = null;
+		String portada = null;
+		String titulo = null;
+		int isbn = 0;
+		int precio = 0;
+		
+		try {
+			uuid = request.getParameter("uuid");
+			titulo = request.getParameter("titulo");
+			autor = request.getParameter("autor");
+			isbn = Integer.parseInt(request.getParameter("isbn"));
+			precio = Integer.parseInt(request.getParameter("precio"));
+			lDAO = new LibroDAOImplHibernate();
+			l = lDAO.obtenerLibroPorUUID(uuid);
+			
+			
+		} catch (Exception e) {
+			
+		}
+		
+		
 		
 		// Tratamiento de la imagen
 		Part filePart = request.getPart("portada");
@@ -68,15 +87,20 @@ public class EditarLibro extends HttpServlet {
 			
 			os = new ByteArrayOutputStream();
 			ImageIO.write(buffered, "jpg", os);
+			
+			l.setPortada(os.toByteArray());
 		}
 		
 		HttpSession sesion = request.getSession();
 		
-		LibroDAO lDAO = new LibroDAOImplHibernate();
-		lDAO.actualizar(titulo, autor, isbn, precio, os, uuid, 
-				((Usuarios)sesion.getAttribute("usuLogeado")));
+		l.setTitulo(titulo);
+		l.setAutor(autor);
+		l.setIsbn(isbn);
+		l.setPrecio(precio);
 		
-		response.sendRedirect("jsp/principalUsu.jsp");
+		lDAO.actualizar(l);
+		
+		response.sendRedirect("jsp/principalAdmin.jsp");
 		
 	}
 	

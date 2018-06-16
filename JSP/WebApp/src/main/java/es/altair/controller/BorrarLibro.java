@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.altair.bean.Libros;
 import es.altair.dao.LibroDAO;
 import es.altair.dao.LibroDAOImplHibernate;
 
@@ -27,20 +28,21 @@ public class BorrarLibro extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uuid = request.getParameter("uuid");
 		
-		LibroDAO lDAO = new LibroDAOImplHibernate();
-		lDAO.borrar(uuid);
-		
-		response.sendRedirect("jsp/principalUsu.jsp");
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+String uuid = request.getParameter("uuid");
+		
+		LibroDAO lDAO = new LibroDAOImplHibernate();
+		Libros l = lDAO.obtenerLibroPorUUID(uuid);
+		lDAO.borrar(l);
+		
+		response.sendRedirect("jsp/principalAdmin.jsp");
 	}
 
 }

@@ -12,11 +12,11 @@ public interface LibroDAO {
 	
 	byte[] obtenerPortadaPorId(int idLibro);
 
-	void borrar(String uuid);
+	void borrar(Libros l);
 	
 	Libros obtenerLibroPorUUID(String uuid);
 
-	void actualizar(String titulo, String autor, int isbn, float precio, ByteArrayOutputStream os,String uuid, Usuarios usuario);
+	void actualizar(Libros l);
 
 	void insertar(Libros l);
 }

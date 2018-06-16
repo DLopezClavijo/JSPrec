@@ -50,12 +50,13 @@ public class AnadirLibro extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	
 			throws ServletException, IOException {
 		String uuid = UUID.randomUUID().toString();
 		String titulo = request.getParameter("titulo");
 		String autor = request.getParameter("autor");
 		int isbn = Integer.parseInt(request.getParameter("isbn"));
-		float precio = Float.parseFloat(request.getParameter("precio"));
+		int precio = Integer.parseInt(request.getParameter("precio"));
 		// Tratamiento de la imagen
 		Part filePart = request.getPart("portada");
 
@@ -81,7 +82,7 @@ public class AnadirLibro extends HttpServlet {
 		
 		lDAO.insertar(l);
 
-		response.sendRedirect("jsp/principalUsu.jsp");
+		response.sendRedirect("jsp/principalAdmin.jsp");
 
 	}
 

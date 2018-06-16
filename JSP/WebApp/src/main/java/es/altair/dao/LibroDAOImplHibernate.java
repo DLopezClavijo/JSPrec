@@ -40,7 +40,7 @@ public class LibroDAOImplHibernate implements LibroDAO {
 		try {
 			sesion.beginTransaction();
 
-			imagen = (byte[]) sesion.createQuery("Select l.portada From Libro l Where l.idLibro=:id")
+			imagen = (byte[]) sesion.createQuery("Select l.portada From Libros l Where l.idLibro=:id")
 					.setParameter("id", idLibro).uniqueResult();
 
 			sesion.getTransaction().commit();
@@ -54,13 +54,13 @@ public class LibroDAOImplHibernate implements LibroDAO {
 		return imagen;
 	}
 
-	public void borrar(String uuid) {
+	public void borrar(Libros l) {
 		Session sesion = SessionProvider.getSession();
 		try {
 			sesion.beginTransaction();
 
-			sesion.createQuery("DELETE FROM Libro WHERE uuid=:clave").setParameter("clave", uuid).executeUpdate();
-
+			
+			sesion.delete(l);
 			sesion.getTransaction().commit();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -77,7 +77,7 @@ public class LibroDAOImplHibernate implements LibroDAO {
 		try {
 			sesion.beginTransaction();
 
-			l = (Libros) sesion.createQuery("FROM Libro l WHERE l.uuid=:clave").setParameter("clave", uuid)
+			l = (Libros) sesion.createQuery("FROM Libros l WHERE l.uuid=:clave").setParameter("clave", uuid)
 					.uniqueResult();
 
 			sesion.getTransaction().commit();
@@ -91,41 +91,41 @@ public class LibroDAOImplHibernate implements LibroDAO {
 	}
 	
 
-	public void actualizar(String titulo, String autor, int isbn, ByteArrayOutputStream os, String uuid,Float precio,
-			Usuarios usuario) {
-		Session sesion = SessionProvider.getSession();
-		try {
-			sesion.beginTransaction();
-
-			if (os != null) {
-				sesion.createQuery("UPDATE Libro SET titulo=:t, autor=:a, isbn=:i,precio=:precio " 
-						+ "portada=:p WHERE uuid=:clave")
-						.setParameter("t", titulo)
-						.setParameter("a", autor)
-						.setParameter("i", isbn)
-						.setParameter("p", os.toByteArray())
-						.setParameter("precio", precio)
-						.setParameter("clave", uuid)
-						.executeUpdate();
-			} else {
-				sesion.createQuery("UPDATE Libro SET titulo=:t, autor=:a, isbn=:i,precio=:precio, " 
-						+ " WHERE uuid=:clave")
-						.setParameter("t", titulo)
-						.setParameter("a", autor)
-						.setParameter("i", isbn)
-						.setParameter("precio", precio)
-						.setParameter("clave", uuid)
-						.executeUpdate();
-			}
-
-			sesion.getTransaction().commit();
-		} catch (Exception e) {
-			// TODO: handle exception
-		} finally {
-			sesion.close();
-			// sf.close();
-		}
-	}
+//	public void actualizar(String titulo, String autor, int isbn, ByteArrayOutputStream os, String uuid,Float precio,
+//			Usuarios usuario) {
+//		Session sesion = SessionProvider.getSession();
+//		try {
+//			sesion.beginTransaction();
+//
+//			if (os != null) {
+//				sesion.createQuery("UPDATE Libro SET titulo=:t, autor=:a, isbn=:i,precio=:precio " 
+//						+ "portada=:p WHERE uuid=:clave")
+//						.setParameter("t", titulo)
+//						.setParameter("a", autor)
+//						.setParameter("i", isbn)
+//						.setParameter("p", os.toByteArray())
+//						.setParameter("precio", precio)
+//						.setParameter("clave", uuid)
+//						.executeUpdate();
+//			} else {
+//				sesion.createQuery("UPDATE Libro SET titulo=:t, autor=:a, isbn=:i,precio=:precio, " 
+//						+ " WHERE uuid=:clave")
+//						.setParameter("t", titulo)
+//						.setParameter("a", autor)
+//						.setParameter("i", isbn)
+//						.setParameter("precio", precio)
+//						.setParameter("clave", uuid)
+//						.executeUpdate();
+//			}
+//
+//			sesion.getTransaction().commit();
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		} finally {
+//			sesion.close();
+//			// sf.close();
+//		}
+//	}
 
 	public void insertar(Libros l) {
 		Session sesion = SessionProvider.getSession();
@@ -145,8 +145,24 @@ public class LibroDAOImplHibernate implements LibroDAO {
 
 	public void actualizar(String titulo, String autor, int isbn, float precio, ByteArrayOutputStream os, String uuid,
 			Usuarios usuario) {
-		// TODO Auto-generated method stub
 		
+		
+	}
+
+	public void actualizar(Libros l) {
+		Session sesion = SessionProvider.getSession();
+		try {
+			sesion.beginTransaction();
+
+			sesion.update(l);
+
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			// sf.close();
+		}
 	}
 
 }

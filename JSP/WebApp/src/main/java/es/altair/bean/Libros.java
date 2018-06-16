@@ -27,7 +27,7 @@ public class Libros implements Serializable {
 	private int isbn;
 	private byte[] portada;
 	private String uuid;
-	private float precio;
+	private int precio;
 
 	@OneToMany(mappedBy="libros")
 	private Set<Compras> compras = new HashSet<Compras>();
@@ -36,7 +36,7 @@ public class Libros implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Libros(String titulo, String autor, int isbn, byte[] portada, String uuid, float precio) {
+	public Libros(String titulo, String autor, int isbn, byte[] portada, String uuid, int precio) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -94,11 +94,11 @@ public class Libros implements Serializable {
 		this.uuid = uuid;
 	}
 
-	public float getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 

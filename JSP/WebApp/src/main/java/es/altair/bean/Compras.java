@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 	 @Temporal(TemporalType.DATE)
 	 private Date fecha;
 	 private int cantidad; 
-	 private float precio; 
+	 private int precio; 
 	 
 	 @ManyToOne(cascade=CascadeType.ALL)
 	 @JoinColumn(name="idUsuario")
@@ -40,7 +40,7 @@ import javax.persistence.TemporalType;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Compras(Date fecha, int cantidad, float precio, Usuarios usuarios, Libros libros) {
+	public Compras(Date fecha, int cantidad, int precio, Usuarios usuarios, Libros libros) {
 		super();
 		this.fecha = fecha;
 		this.cantidad = cantidad;
@@ -73,11 +73,11 @@ import javax.persistence.TemporalType;
 		this.cantidad = cantidad;
 	}
 
-	public float getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 

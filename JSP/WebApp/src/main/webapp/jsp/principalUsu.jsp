@@ -65,27 +65,13 @@
 						src="image.jsp?imag=<%=l.getidLibro()%>" class="img-thumbnail"
 						width="50" height="50"></td>
 					<td><%=l.getPrecio()%></td>
-					<td>	 <!-- Button trigger modal -->		
-						<button type="button" class="btn btn-success" data-toggle="modal"
-							data-target="#editarLibro<%=l.getidLibro()%>">
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i> Añadir a cesta
-						</button> <!-- Modal -->
-						<div class="modal fade" id="borrarLibro<%=l.getidLibro()%>"
-							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Borrar
-											Libro</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											onclick="location.href='../ComprarLibro?codigo=<%=l.getUuid()%> aria-label="Close">
-											
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
+					
+					<td>
+						<form action="../AnadirAlCarrito" method="post" role="form">
+
+							<input type="text" name="uuid" id="uuid" value="<%=l.getUuid()%>" hidden="hidden">
+							<input type="submit" class="form-control btn btn-success" value="Comprar">
+						</form>
 
 					</td>
 				</tr>

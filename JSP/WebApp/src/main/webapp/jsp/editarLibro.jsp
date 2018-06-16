@@ -65,12 +65,12 @@
 								class="form-control" id="portada" name="portada">
 						</div>
 						<div class="form-group">
-							<label for="precio">Precio</label> <input type="float" name="precio"
+							<label for="precio">Precio</label> <input type="number" name="precio"
 								id="precio" class="form-control" value="<%=l.getPrecio()%>">
 						</div>
 						<div class="form-group">
 							<input type="submit" class="form-control btn btn-primary">
-						</div>
+						</div> 
 					</form>
 				</div>
 			</div>

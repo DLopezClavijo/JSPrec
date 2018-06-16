@@ -30,7 +30,7 @@
 				<li class="breadcrumb-item"><a href="../index.jsp">Bienvenido
 						<%=((Usuarios) session.getAttribute("usuLogeado")).getNombre()%>
 				</a></li>
-				<li class="breadcrumb-item"><a href="principalUsu.jsp">Pincipal
+				<li class="breadcrumb-item"><a href="principalAdmin.jsp">Pincipal
 						Usuario</a></li>
 				<li class="breadcrumb-item">Añadir Libro</li>
 				<li class="breadcrumb-item active"><a href="../CerrarSesion">Cerrar
@@ -62,7 +62,7 @@
 								class="form-control" id="portada" name="portada">
 						</div>
 						<div class="form-group">
-							<label for="isbn">Precio</label> <input type="float" name="precio"
+							<label for="isbn">Precio</label> <input type="number" name="precio"
 								id="precio" class="form-control" required="required">
 						</div>
 						<div class="form-group">
