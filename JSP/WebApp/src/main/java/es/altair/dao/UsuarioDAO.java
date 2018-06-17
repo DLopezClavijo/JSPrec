@@ -5,6 +5,8 @@ import es.altair.bean.Usuarios;
 public interface UsuarioDAO {
 
 	Usuarios comprobarUsuario(String login, String password);
+	
+	Usuarios getUsuarioByLogin(String login);
 
 	int insertar(Usuarios usu);
 

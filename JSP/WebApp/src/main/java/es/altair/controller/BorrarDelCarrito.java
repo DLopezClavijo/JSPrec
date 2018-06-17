@@ -6,19 +6,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.altair.bean.Compras;
 import es.altair.dao.CompraDAO;
 import es.altair.dao.CompraDAOImplHibernate;
 
 /**
- * Servlet implementation class BorrarCompra
+ * Servlet implementation class BorrarDelCarrito
  */
-public class BorrarCompra extends HttpServlet {
+public class BorrarDelCarrito extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BorrarCompra() {
+    public BorrarDelCarrito() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +28,8 @@ public class BorrarCompra extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Entramos en comprar");
-		int idLibro = Integer.parseInt(request.getParameter("id"));
-
-		CompraDAO cDAO = new CompraDAOImplHibernate();
-		System.out.println("Vamos a borrar");
-		cDAO.borrar(idLibro); 
-		
-		System.out.println("Volvemos a la pagina");
-		response.sendRedirect("jsp/misCompras.jsp");
-		
-		
+		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -45,7 +37,16 @@ public class BorrarCompra extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+				System.out.println("Entramos en comprar");
+				int idCompra = Integer.parseInt(request.getParameter("idCompra"));
+
+				CompraDAO cDAO = new CompraDAOImplHibernate();
+				System.out.println("Vamos a borrar");
+				Compras compra = cDAO.getCompraById(idCompra);
+				cDAO.borrar(compra); 
+				
+				System.out.println("Volvemos a la pagina");
+				response.sendRedirect("jsp/cesta.jsp");
 	}
 
 }

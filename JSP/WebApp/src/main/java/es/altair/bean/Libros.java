@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Table;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +29,7 @@ public class Libros implements Serializable {
 	private String uuid;
 	private int precio;
 
-	@OneToMany(mappedBy="libros")
+	@OneToMany(mappedBy="libros", cascade=CascadeType.ALL)
 	private Set<Compras> compras = new HashSet<Compras>();
 
 	public Libros() {
@@ -107,7 +107,7 @@ public class Libros implements Serializable {
 	@Override
 	public String toString() {
 		return "Libro [idLibro=" + idLibro + ", titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn + ", portada="
-				+ Arrays.toString(portada) + ", uuid=" + uuid + ", precio=" + precio + ", compras=" + compras + "]";
+				+ Arrays.toString(portada) + ", uuid=" + uuid + ", precio=" + precio +"]";
 	}
 
 }

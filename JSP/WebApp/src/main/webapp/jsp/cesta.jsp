@@ -32,24 +32,28 @@
 		{
 			response.sendRedirect("../index.jsp?mensaje=Inicie sesión)");
 		} else{
-			String login = ((Usuarios)session.getAttribute("usuLogeado")).getLogin();
+// 			String login = ((Usuarios)session.getAttribute("usuLogeado")).getLogin();
 			
 			CompraDAO cDAO = new CompraDAOImplHibernate();
-			List<Compras> listCompra = cDAO.listarPorUsu((Usuarios)session.getAttribute("usuLogeado"));
-			
+			Usuarios usuario = (Usuarios)session.getAttribute("usuLogeado");
+			System.out.println(usuario.toString());
+			List<Compras> listCompra = cDAO.listarPorUsu(usuario.getIdUsuarios());
+			System.out.println(listCompra.size());
+			for (Compras c : listCompra){
+				System.out.println(c.toString());
+			}
 		%>
 		
 		<br>
 		
 			<div class="row col-md-8 col-md-offset-2">
 				<table class="table table-striped">
-					<h1 class="my-4">Mis Compras</h1>
+					<h1 class="my-4">Historial de compras</h1>
 					
 					<thead>
 						<tr>
 							<th>Portada</th>
 							<th>Fecha</th>
-							<th>Cantidad</th>
 							<th>Precio</th>
 							<th>Libro</th>
 							<th></th>
@@ -65,42 +69,46 @@
 								class="img-thumbnail" width="150" height="150"></td>
 							
 							<td><%=c.getFecha()%></td>
-							<td><%=c.getCantidad() %></td>
 							<td><%=c.getPrecio() %></td>
 							<td><%=c.getLibro().getTitulo() %></td>
 							<td>
 							
-							<button type="button" class="btn btn-warning" data-toggle="modal"
-							data-target="#borrarCompra<%=c.getIdcompras()%>">
-							<i class="fa fa-times" aria-hidden="true"></i> Borrar
-							</button>
+<!-- 							<button type="button" class="btn btn-warning" data-toggle="modal" -->
+<%-- 							data-target="#borrarCompra<%=c.getIdcompras()%>"> --%>
+<!-- 							<i class="fa fa-times" aria-hidden="true"></i> Borrar -->
+<!-- 							</button> -->
+
+<!-- 							<form action="../BorrarDelCarrito" method="post" role="form"> -->
+<%-- 								<input type="text" name="idCompra" id="idCompra" value="<%=c.getIdcompras()%>" hidden="hidden"> --%>
+<!-- 								<input type="submit" class="form-control btn btn-primary" value="Borrar"> -->
+<!-- 							</form> -->
 							
-							<div class="modal fade" id="borrarCompra<%=c.getIdcompras()%>"
-							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Borrar
-											Compra</h5>
-										<button type="button" class="close" data-dismiss="modal"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										¿Desea borrar la compra del
-										<%=c.getLibro().getTitulo()%>?
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">No</button>
-										<button type="button" class="btn btn-primary"
-											onclick="location.href='../BorrarCompra?id=<%=c.getIdcompras()%>'">Sí</button>
-									</div>
-								</div>
-							</div>
-						</div>
+<%-- 							<div class="modal fade" id="borrarCompra<%=c.getIdcompras()%>" --%>
+<!-- 							tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" -->
+<!-- 							aria-hidden="true"> -->
+<!-- 							<div class="modal-dialog" role="document"> -->
+<!-- 								<div class="modal-content"> -->
+<!-- 									<div class="modal-header"> -->
+<!-- 										<h5 class="modal-title" id="exampleModalLabel">Borrar -->
+<!-- 											Compra</h5> -->
+<!-- 										<button type="button" class="close" data-dismiss="modal" -->
+<!-- 											aria-label="Close"> -->
+<!-- 											<span aria-hidden="true">&times;</span> -->
+<!-- 										</button> -->
+<!-- 									</div> -->
+<!-- 									<div class="modal-body"> -->
+<!-- 										¿Desea borrar la compra del -->
+<%-- 										<%=c.getLibro().getTitulo()%>? --%>
+<!-- 									</div> -->
+<!-- 									<div class="modal-footer"> -->
+<!-- 										<button type="button" class="btn btn-secondary" -->
+<!-- 											data-dismiss="modal">No</button> -->
+<!-- 										<button type="button" class="btn btn-primary" -->
+<%-- 											onclick="location.href='../BorrarCompra?id=<%=c.getIdcompras()%>'">Sí</button> --%>
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 							<%
 							}
 							%>

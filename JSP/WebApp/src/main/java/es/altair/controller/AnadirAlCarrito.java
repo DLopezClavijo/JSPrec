@@ -16,6 +16,8 @@ import es.altair.dao.CompraDAO;
 import es.altair.dao.CompraDAOImplHibernate;
 import es.altair.dao.LibroDAO;
 import es.altair.dao.LibroDAOImplHibernate;
+import es.altair.dao.UsuarioDAO;
+import es.altair.dao.UsuarioDAOImplHibernate;
 
 /**
  * Servlet implementation class AnadirAlCarrito
@@ -55,7 +57,7 @@ public class AnadirAlCarrito extends HttpServlet {
 		String uuid = request.getParameter("uuid");
 		System.out.println(uuid);
 		LibroDAO lDAO = new LibroDAOImplHibernate();
-
+		UsuarioDAO uDAO = new UsuarioDAOImplHibernate();
 		Libros l = lDAO.obtenerLibroPorUUID(uuid);
 		System.out.println("Libro: "+ l.getTitulo());
 		
@@ -64,9 +66,10 @@ public class AnadirAlCarrito extends HttpServlet {
 		
 			
 		CompraDAO cDAO = new CompraDAOImplHibernate(); 
+//		Usuarios u = (Usuarios) sesion.getAttribute("usuLogeado");
 		
-		Compras c = new Compras(fechaR, cantidad, precio1, (Usuarios)sesion.getAttribute("usuLogeado") , l);
-		System.out.println("COMPRA: "+c);
+		Compras c = new Compras(fechaR, cantidad, precio1,(Usuarios) sesion.getAttribute("usuLogeado"), l);
+		System.out.println("Usuario: "+c.getUsuario().toString());
 		cDAO.insertar(c);
 		
 		response.sendRedirect("jsp/principalUsu.jsp");

@@ -18,14 +18,15 @@ public class Usuarios implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idusuario;
+	private int idUsuario;
+	
 	private String login;
 	private String password;
 	private String nombre;
 	private String email;
 	private int tipo;
 
-	@OneToMany(mappedBy="usuarios")
+	@OneToMany(mappedBy="usuarios", cascade=CascadeType.ALL)
 	private Set<Compras> compras = new HashSet<Compras>();
 	
 //	@OneToMany(mappedBy="usuario")
@@ -45,11 +46,11 @@ public class Usuarios implements Serializable {
 	}
 
 	public int getIdUsuarios() {
-		return idusuario;
+		return idUsuario;
 	}
 
-	public void setIdUsuarios(int idusuario) {
-		this.idusuario = idusuario;
+	public void setIdUsuarios(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getLogin() {
@@ -104,7 +105,7 @@ public class Usuarios implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idusuario + ", login=" + login + ", password=" + password + ", nombre=" + nombre
+		return "Usuario [idUsuario=" + idUsuario + ", login=" + login + ", password=" + password + ", nombre=" + nombre
 				+ ", email=" + email + ", tipo=" + tipo + "]";
 	}
 

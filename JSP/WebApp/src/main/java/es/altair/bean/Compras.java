@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
  
 	 @Id
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
-	 private int idComprass; 
+	 private int idCompra; 
 	 
 	 @Temporal(TemporalType.DATE)
 	 private Date fecha;
@@ -32,7 +32,7 @@ import javax.persistence.TemporalType;
 	 private Usuarios usuarios; 
 	 
 	 @ManyToOne(cascade=CascadeType.ALL)
-	 @JoinColumn(name="idlibros")
+	 @JoinColumn(name="idLibro")
 	 private Libros libros;
 
 	public Compras() {
@@ -50,11 +50,11 @@ import javax.persistence.TemporalType;
 	}
 
 	public int getIdcompras() {
-		return idComprass;
+		return idCompra;
 	}
 
 	public void setIdcompras(int idComprass) {
-		this.idComprass = idComprass;
+		this.idCompra = idComprass;
 	}
 
 	public Date getFecha() {
@@ -95,6 +95,12 @@ import javax.persistence.TemporalType;
 
 	public void setLibro(Libros libros) {
 		this.libros = libros;
+	}
+
+	@Override
+	public String toString() {
+		return "Compras [idCompra=" + idCompra + ", fecha=" + fecha + ", cantidad=" + cantidad + ", precio=" + precio
+				+ ", usuarios=" + usuarios + ", libros=" + libros + "]";
 	} 
 	 
 	 

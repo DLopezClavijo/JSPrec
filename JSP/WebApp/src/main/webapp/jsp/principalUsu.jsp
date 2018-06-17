@@ -35,7 +35,7 @@
 				</li>	
 				<li class="breadcrumb-item">Usuario</li>
 				<li class="breadcrumb-item active"><a href="../CerrarSesion">Cerrar Sesión</a></li>	
-				<li class="nav-item"><a class="nav-link" href="cesta.jsp">Cesta</a></li>
+				<li class="nav-item"><a class="nav-link" href="cesta.jsp">Historial de Compras</a></li>
 			</ol>
 			
 		</div>

@@ -46,6 +46,12 @@
   	<description></description>
   	<servlet-class>es.altair.controller.AnadirAlCarrito</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>BorrarDelCarrito</servlet-name>
+  	<display-name>BorrarDelCarrito</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.BorrarDelCarrito</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ValidarUsuario</servlet-name>
   	<url-pattern>/ValidarUsuario</url-pattern>
@@ -73,5 +79,9 @@
   <servlet-mapping>
   	<servlet-name>AnadirAlCarrito</servlet-name>
   	<url-pattern>/AnadirAlCarrito</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BorrarDelCarrito</servlet-name>
+  	<url-pattern>/BorrarDelCarrito</url-pattern>
   </servlet-mapping>
 </web-app>

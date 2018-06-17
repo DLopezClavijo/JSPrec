@@ -84,4 +84,27 @@ public class UsuarioDAOImplHibernate implements UsuarioDAO {
 		return correcto;
 	}
 
+	public Usuarios getUsuarioByLogin(String login) {
+		
+			Usuarios usuario = null;
+
+			Session sesion = SessionProvider.getSession();
+			try {
+				sesion.beginTransaction();
+
+				usuario = (Usuarios) sesion.createQuery("Select u From Usuarios u Where u.login=:login")
+						.setParameter("login", login).uniqueResult();
+
+				sesion.getTransaction().commit();
+			} catch (Exception e) {
+				// TODO: handle exception
+			} finally {
+				sesion.close();
+				// sf.close();
+			}
+
+			return usuario;
+		
+	}
+
 }
